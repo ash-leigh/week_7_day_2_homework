@@ -8,7 +8,7 @@ window.onload = function(){
       jsonString = request.responseText;
       countries = JSON.parse(jsonString);
     }
-    filterCountries();
+    // filterCountries();
     selectCountry();
     main();
   }
@@ -21,62 +21,61 @@ function main(){
   countryHandleClick();
 }
 
-function filterHandleClick(){
-  var button = document.getElementById('filter-button');
-  button.onclick = function(){
-    var region = document.getElementById('selector').value;
-    // selectCountry(region);
-  }
-}
+// function filterHandleClick(){
+//   var button = document.getElementById('filter-button');
+//   button.onclick = function(){
+//     var region = document.getElementById('filter').value;
+//     selectCountry(region);
+//   }
+// }
 
 function countryHandleClick(){
   var button = document.getElementById('country-button');
   button.onclick = function(){
-    var selected = document.getElementById('filter').value;
+    var selected = document.getElementById('selector').value;
     showCountryData(selected);
   }
 }
 
-function filterCountries(){
-  var allRegions = [];
+// function filterCountries(){
+//   var allRegions = [];
+//   var form = document.getElementById('form');
+//   var filterDropDown = document.createElement('select');
+//   filterDropDown.setAttribute('id', 'filter');
+//   countries.forEach(function(country){
+//     allRegions.push(country.region);
+//   })
+
+//   var uniqueRegions = allRegions.filter(function(elem, pos) {
+//     return allRegions.indexOf(elem) == pos;
+//   });
+
+//   uniqueRegions.forEach(function(region){
+//     var regionObject = document.createElement('option');
+
+//     regionObject.innerHTML = region;
+
+//     filterDropDown.appendChild(regionObject);
+//     form.appendChild(filterDropDown);
+//   })
+// }
+
+function selectCountry(){
+  // var region = document.getElementById('filter').value;
+
   var form = document.getElementById('form');
-  var filterDropDown = document.createElement('select');
-  filterDropDown.setAttribute('id', 'filter');
-  countries.forEach(function(country){
-    allRegions.push(country.region);
-  })
-
-  var uniqueRegions = allRegions.filter(function(elem, pos) {
-    return allRegions.indexOf(elem) == pos;
-  });
-
-  uniqueRegions.forEach(function(region){
-    var regionObject = document.createElement('option');
-
-    regionObject.innerHTML = region;
-
-    filterDropDown.appendChild(regionObject);
-    form.appendChild(filterDropDown);
-  })
-}
-
-function selectCountry(region){
-  var region = document.getElementById('filter').value;
-
-  var form = document.getElementById('form');
-  
   var dropDown = document.createElement('select');
   dropDown.setAttribute('id', 'selector');
 
   countries.forEach(function(country){
-    if(country.region === region){
+    // if(country.region === region){
     var countryObject = document.createElement('option');
 
     countryObject.innerHTML = country.name;
 
     dropDown.appendChild(countryObject);
     form.appendChild(dropDown);
-  }
+  // }
   })
 }
 
